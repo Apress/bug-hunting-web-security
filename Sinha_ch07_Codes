@@ -1,0 +1,24 @@
+//code 7.1
+SPF record lookup and validation for: sanjibsinha.fun
+SPF records are published in DNS as TXT records.
+
+The TXT records found for your domain are:
+v=spf1 +a +mx +ip4:94.130.19.124 ~all
+
+Checking to see if there is a valid SPF record.
+
+Found v=spf1 record for sanjibsinha.fun:
+v=spf1 +a +mx +ip4:94.130.19.124 ~all
+
+evaluating...
+SPF record passed validation test with pySPF (Python SPF library)!
+
+
+------------------
+
+//code 7.2
+v=spf1 +a +mx +ip4:94.130.19.124 ~all
+
+----------------
+
+

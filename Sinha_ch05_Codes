@@ -1,0 +1,120 @@
+//code 5.1
+<?php
+/* Redirecting browser */
+header("Location: https://www.sanjib.site");
+?>
+
+------------
+
+//code 5.2
+<?php
+/* Taking untrusted input from a form and Redirecting browser */
+$RedirectingURL = $_GET['url'];
+header("Location: " . $RedirectingURL);
+?>
+
+----------------
+
+//code 5.3
+response.sendRedirect("https://www.sanjib.site");
+
+
+------------------
+
+//code 5.4
+/* here string url accepts user input */
+response.sendRedirect(request.getParameter("url"));
+
+-------------------
+
+//code 5.5
+GET /zapwave/ HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/
+Cookie: JSESSIONID=908984390DB986CA443B6D455864E077; PHPSESSID=6iccf8niu6j4a5sq27c9k5a4a2; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+-----------------------
+
+//code 5.6
+POST /zapwave/active/redirect/redirect-form-basic.jsp HTTP/1.1
+Host: 192.168.2.3
+Accept-Encoding: gzip, deflate
+Accept: */*
+Accept-Language: en
+User-Agent: Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Win64; x64; Trident/5.0)
+Connection: close
+Referer: http://192.168.2.3/zapwave/active/redirect/redirect-form-basic.jsp
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 25
+Cookie: JSESSIONID=B110B0C8FB43F7379167CF872FA700F7; zap-info-cookie-no-http-only=test; zap-xss-cookie-basic=Peter Winter
+
+target=redirect-index.jsp
+
+
+-------------------------
+
+//code 5.7
+GET /zapwave/active/redirect/redirect-url-basic.jsp?redir=redirect-index.jsp HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cookie: JSESSIONID=B110B0C8FB43F7379167CF872FA700F7
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+------------------------------
+
+//code 5.8
+HTTP/1.1 302 Moved Temporarily
+Date: Wed, 26 Jun 2019 10:15:38 GMT
+Server: Apache-Coyote/1.1
+Location: http://192.168.2.3/zapwave/active/redirect/redirect-index.jsp
+Content-Type: text/html
+SET-COOKIE: JSESSIONID=B110B0C8FB43F7379167CF872FA700F7; HttpOnly
+Via: 1.1 127.0.1.1
+Vary: Accept-Encoding
+Content-Length: 0
+Connection: close
+
+----------------------------
+
+//code 5.9
+HTTP/1.1 302 Moved Temporarily
+Date: Wed, 26 Jun 2019 10:15:38 GMT
+Server: Apache-Coyote/1.1
+Location: https://sanjib.site
+Content-Type: text/html
+SET-COOKIE: JSESSIONID=B110B0C8FB43F7379167CF872FA700F7; HttpOnly
+Via: 1.1 127.0.1.1
+Vary: Accept-Encoding
+Content-Length: 0
+Connection: close
+
+
+-------------------------------
+
+//code 5.10
+GET /zapwave/active/redirect/redirect-url-basic.jsp?redir=https://sanjib.site HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Cookie: JSESSIONID=B110B0C8FB43F7379167CF872FA700F7
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+-----------------------------
+
+

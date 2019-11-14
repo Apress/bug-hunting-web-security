@@ -1,0 +1,94 @@
+//code 2.2
+sudo apt-get install virtualbox 
+sudo apt install virtualbox-ext-pack 
+sudo apt install virtualbox virtualbox-ext-pack
+sudo apt-get update
+sudo add-apt-repository "deb http://download.virtualbox.org/virtualbox/debian <ubuntu-release> contrib"
+sudo apt-get install virtual-box-6.0
+sudo apt-get install dkms
+sudo apt install dkms build-essential module-assistant
+
+-----------------
+
+//code 2.3
+root@kali:~# cd Downloads/
+root@kali:~/Downloads# ls
+burpsuite_community_linux_v1_7_36.sh  cacert.der  webgoat-server-8.0.0.M25.jar
+root@kali:~/Downloads# sudo chmod +x burpsuite_community_linux_v1_7_36.sh 
+root@kali:~/Downloads# ls
+burpsuite_community_linux_v1_7_36.sh  cacert.der  webgoat-server-8.0.0.M25.jar
+root@kali:~/Downloads# ./burpsuite_community_linux_v1_7_36.sh 
+Unpacking JRE ...
+Starting Installer ...
+
+------------------------
+//code 2.4
+root@kali:~# cd Downloads/
+root@kali:~/Downloads# ls
+webgoat-server-8.0.0.M25.jar
+root@kali:~/Downloads# java -jar webgoat-server-8.0.0.M25.jar 
+18:58:02.756 [main] INFO org.owasp.webgoat.StartWebGoat - Starting WebGoat with args: {}
+
+
+------------------------
+
+//code 2.5
+GET /computer-science-tutor-in-kolkata/ HTTP/1.1
+Host: sanjib.site
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://sanjib.site/
+Cookie: XSRF-TOKEN=eyJpdiI6Ik1LSG1sc2c2TElQM3Jnb0dqQjhcL2V3PT0iLCJ2YWx1ZSI6IktJbVZBUFdzV2QrMnFvXC9ZWE1mcXVLcmVsWUw4OHpPcmZlcHNDbFRDRkE1dXJlNVZoRkhGeVJ5MFdGZWZcL3dsOSIsIm1hYyI6IjQyNDBiYTk4YzZmODk2NWNlYjE5Y2ZiNDUxMjcwZDAwZGY5MTQ2NzM5NTI5MjZlMjVjNDM1MWRmMzU2NWJiNzcifQ%3D%3D; laravel_session=eyJpdiI6IlhTcXRsNXUrV2RnQnRBZDRYdjZ6MVE9PSIsInZhbHVlIjoiVFBrdUs3ekNKSWlBWGtGT01ONGc5NDBaa2hQQUZCT21RWHJrbEhtZkRoYWlIdHlXWEdWUVVCYjBIajhPYTYrTiIsIm1hYyI6Ijg2YzcwNDRjMDExNmQ4Y2U4NTEwZDg1N2VlZGExNmUyMTdiOTBiOTUwZGIzZTU2MDQ1NGMyMDRmNDFlMzlmZDAifQ%3D%3D
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+-----------------
+
+//code 2.6
+root@kali:~# nmap -v -A sanjib.site
+Starting Nmap 7.70 ( https://nmap.org ) at 2019-06-06 02:14 EDT
+NSE: Loaded 148 scripts for scanning.
+NSE: Script Pre-scanning.
+Initiating NSE at 02:14
+Completed NSE at 02:14, 0.00s elapsed
+Initiating NSE at 02:14
+Completed NSE at 02:14, 0.00s elapsed
+Initiating Ping Scan at 02:14
+Scanning sanjib.site (192.185.129.64) [4 ports]
+Completed Ping Scan at 02:14, 0.00s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 02:14
+Completed Parallel DNS resolution of 1 host. at 02:14, 0.36s elapsed
+Initiating SYN Stealth Scan at 02:14
+Scanning sanjib.site (192.185.129.64) [1000 ports]
+Discovered open port 53/tcp on 192.185.129.64
+Discovered open port 143/tcp on 192.185.129.64
+Discovered open port 587/tcp on 192.185.129.64
+Discovered open port 80/tcp on 192.185.129.64
+Discovered open port 443/tcp on 192.185.129.64
+Discovered open port 25/tcp on 192.185.129.64
+Discovered open port 110/tcp on 192.185.129.64
+Discovered open port 22/tcp on 192.185.129.64
+Discovered open port 995/tcp on 192.185.129.64
+Discovered open port 993/tcp on 192.185.129.64
+Discovered open port 21/tcp on 192.185.129.64
+Discovered open port 3306/tcp on 192.185.129.64
+Discovered open port 465/tcp on 192.185.129.64
+Discovered open port 8008/tcp on 192.185.129.64
+Completed SYN Stealth Scan at 02:15, 22.34s elapsed (1000 total ports)
+Initiating Service scan at 02:15
+Scanning 14 services on sanjib.site (192.185.129.64)
+Completed Service scan at 02:15, 27.57s elapsed (14 services on 1 host)
+Initiating OS detection (try #1) against sanjib.site (192.185.129.64)
+Retrying OS detection (try #2) against sanjib.site (192.185.129.64)
+Initiating Traceroute at 02:15
+Completed Traceroute at 02:15, 0.02s elapsed
+Initiating Parallel DNS resolution of 2 hosts. at 02:15
+Completed Parallel DNS resolution of 2 hosts. at 02:15, 0.01s elapsed
+NSE: Script scanning 192.185.129.64.
+
+---------------------
+
+

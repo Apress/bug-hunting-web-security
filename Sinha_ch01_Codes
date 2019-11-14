@@ -1,0 +1,6 @@
+//code 1.1
+root@kali:~# cd Downloads/
+root@kali:~/Downloads# ls
+webgoat-server-8.0.0.M25.jar
+root@kali:~/Downloads# java -jar webgoat-server-8.0.0.M25.jar 
+18:58:02.756 [main] INFO org.owasp.webgoat.StartWebGoat - Starting WebGoat with args: {}

